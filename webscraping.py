@@ -96,4 +96,16 @@ podex.head()
 fight = df.iloc[:,4:10]
 fight.head()
 
+#create unique id column
+fight['ID'] = range(len(fight))
+fight.head()
+
+import sqlalchemy  # Package for accessing SQL databases via Python
+
+# Connect to database (Note: The package psychopg2 is required for Postgres to work with SQLAlchemy)
+engine = sqlalchemy.create_engine("postgresql://postgres:Ekxxcoo4@localhost/pokemon")
+con = engine.connect()
+
+# Verify that there are no existing tables
+print(engine.table_names())
 
