@@ -109,3 +109,7 @@ con = engine.connect()
 # Verify that there are no existing tables
 print(engine.table_names())
 
+#convert our dataframes into tables in postgres
+podex.to_sql('pokedex', con = engine, if_exists='replace', index = False)
+fight.to_sql('fighting', con, if_exists='replace', index = False)
+
