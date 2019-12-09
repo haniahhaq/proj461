@@ -62,3 +62,38 @@ df=pd.DataFrame(Dict)
 
 df.head()
 
+import pyodbc
+import statistics
+
+#connect to our database
+connection = pyodbc.connect(
+    "DRIVER={PostgreSQL Unicode(x64)};"
+    "DATABASE=pokemon;"
+    "UID=postgres;"
+    "PWD=*******;"
+    "SERVER=localhost;"
+    "PORT=5432;"
+    )
+
+print("Connection Successful!")
+
+#create cursor
+cursor = connection.cursor()
+
+#adjut settings to allow for easy creating of tables
+cursor.execute("SET client_encoding TO 'UTF8';")
+cursor.commit()
+
+#split dataframe into 2 different tables
+podex = df.iloc[:,0:4]
+podex = podex.drop(['#'], axis = 1) #drop a column with repetition
+podex.head()
+
+#create unique id column
+podex['ID'] = range(len(podex))
+podex.head()
+
+fight = df.iloc[:,4:10]
+fight.head()
+
+
