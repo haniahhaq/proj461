@@ -1,7 +1,7 @@
-## proj461
+# Proj461
 
 
-# Specifications:
+### Specifications:
 
 Python 3- packages needed: pandas, sqlalchemy, lxml, psycopg2, statistics
 
